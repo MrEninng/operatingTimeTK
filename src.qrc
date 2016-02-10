@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.cpp</file>
+        <file>mainwindow.cpp</file>
+        <file>mainwindow.h</file>
+        <file>mainwindow.ui</file>
+        <file>operatingTimeTK.pro</file>
+        <file>src.qrc</file>
+        <file>imgs/burenie.png</file>
+    </qresource>
+</RCC>
