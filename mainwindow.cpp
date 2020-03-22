@@ -5,8 +5,6 @@
 #include <QValidator>
 #include <QRegExp>
 
-const long double FUCKING_LONG_DOUBLE_CONSTANT = 0.000000981;
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -132,10 +130,11 @@ void MainWindow::calculate()
 
     fills.out.G16 = 2 * ((fills.out.I11 * fills.in.E7*(fills.in.E7 + 16.6)) + ( 2 * fills.in.E7 * (fills.in.E12 + fills.out.I12))) / 1000000;
 
-    // For calculating of formuls with long double constant I use temp Variable
+    const long double CALCULATION_COEF = 0.000000981;
+    // For calculating of formuls with long double constant use temp Variable
     {
         long double tempLongDoubleI21 = 0;
-        tempLongDoubleI21 = FUCKING_LONG_DOUBLE_CONSTANT * (((fills.in.E21 * fills.out.I11)
+        tempLongDoubleI21 = CALCULATION_COEF * (((fills.in.E21 * fills.out.I11)
                             * (fills.in.E21 + 18.8)) + ((4 * fills.in.E21)
                             * (fills.in.E12 + fills.out.I12)));
         fills.out.I21 = static_cast<double>(tempLongDoubleI21);
@@ -144,7 +143,7 @@ void MainWindow::calculate()
 
     {
         long double tempLongDoubleI22 = 0;
-        tempLongDoubleI22 = FUCKING_LONG_DOUBLE_CONSTANT * (((fills.out.I11 * fills.in.E22)
+        tempLongDoubleI22 = CALCULATION_COEF * (((fills.out.I11 * fills.in.E22)
                            *(fills.in.E22 + 18.8)) + ((4 * fills.in.E22)*(fills.in.E12 + fills.out.I12)));
         fills.out.I22 = static_cast<double>(tempLongDoubleI22);
     }
@@ -156,7 +155,7 @@ void MainWindow::calculate()
 
     {
         long double tempLongDoubleG32 = 0;
-        tempLongDoubleG32 = (FUCKING_LONG_DOUBLE_CONSTANT * (((fills.out.I30 * fills.in.E29)
+        tempLongDoubleG32 = (CALCULATION_COEF * (((fills.out.I30 * fills.in.E29)
                             * (fills.in.E29 + 12)) + ((4 * fills.in.E29) * fills.in.E12))) / 2;
         fills.out.G32 = static_cast<double>(tempLongDoubleG32);
     }
